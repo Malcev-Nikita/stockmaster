@@ -6,7 +6,6 @@ header {
 }
 header .logo {
   width: 20%;
-  text-align: center;
 }
 header .menu {
   width: 60%;
@@ -35,6 +34,32 @@ header .auth {
   text-align: center;
 }
 
+.catalogs {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  row-gap: 20px;
+  gap: 50px;
+  margin-top: 50px;
+}
+.catalogs .catalog {
+  width: calc(20% - 50px);
+}
+.catalogs .catalog img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
 body, html {
   margin: 0;
+}
+
+body {
+  width: 90%;
+  margin: 0 auto;
 }/*# sourceMappingURL=main.css.map */
