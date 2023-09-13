@@ -10,8 +10,69 @@
     .catalog
         width: calc(20% - 50px)
 
+        .media_container
+            position: relative
+
+            .edit, .delete
+                position: absolute
+                width: 40px
+                height: 40px
+                display: flex
+                justify-content: center
+                align-items: center
+                border-radius: 50%
+                bottom: 12px
+                cursor: pointer
+
+                svg
+                    width: 18px
+                    height: 18px
+                
+            .edit
+                background: #ffae00
+                right: 60px
+
+            .delete
+                background: #ee0b0b
+                right: 10px
+
+                svg
+                    width: 20px
+                    height: 20px
+                    fill: #fff
+
         img
             width: 100%
             height: auto
             object-fit: cover
             object-position: center
+
+    .last_element
+        background: #36e600
+        position: relative
+        border-radius: 15px
+        box-shadow: 6px 6px 15px 3px #000
+        cursor: pointer
+
+        svg
+            fill: #fff
+            width: 50px 
+            height: 50px
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+
+
+        // &::before
+        //     content: ""
+        //     display: block
+        //     position: absolute
+        //     width: 90%
+        //     height: 90%
+        //     border: 2px #fff solid
+        //     border-radius: 20px
+        //     left: 50%
+        //     top: 50%
+        //     transform: translate(-50%, -50%)
+        //     box-shadow: 3px 3px #fff

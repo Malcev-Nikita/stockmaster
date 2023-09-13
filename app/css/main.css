@@ -46,6 +46,37 @@ header .auth {
 .catalogs .catalog {
   width: calc(20% - 50px);
 }
+.catalogs .catalog .media_container {
+  position: relative;
+}
+.catalogs .catalog .media_container .edit, .catalogs .catalog .media_container .delete {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  bottom: 12px;
+  cursor: pointer;
+}
+.catalogs .catalog .media_container .edit svg, .catalogs .catalog .media_container .delete svg {
+  width: 18px;
+  height: 18px;
+}
+.catalogs .catalog .media_container .edit {
+  background: #ffae00;
+  right: 60px;
+}
+.catalogs .catalog .media_container .delete {
+  background: #ee0b0b;
+  right: 10px;
+}
+.catalogs .catalog .media_container .delete svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
 .catalogs .catalog img {
   width: 100%;
   height: auto;
@@ -53,6 +84,22 @@ header .auth {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+.catalogs .last_element {
+  background: #36e600;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 6px 6px 15px 3px #000;
+  cursor: pointer;
+}
+.catalogs .last_element svg {
+  fill: #fff;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 body, html {
