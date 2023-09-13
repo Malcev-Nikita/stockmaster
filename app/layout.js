@@ -13,8 +13,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <link href="/app/css/main.css" rel="stylesheet"/>
-      
       <body className={inter.className}>
         <Header/>
 

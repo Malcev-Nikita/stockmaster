@@ -1,19 +1,22 @@
 import Image from 'next/image'
 
-async function getData() {
-  const res = await fetch('https://api.example.com/...')
- 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
- 
+async function getContents() {
+  const res = await fetch(process.env.NEXT_PUBLIC_STRAPI_API_URL + '/api/catalogs')
   return res.json()
 }
 
-export default function Home() {
+export default async function Page() {
+  const data = await getContents()
+
   return (
     <main>
-      
+      <div className='catalogs'>
+        {
+          data.map
+        }
+      </div>
+
+      {console.log(data)}
     </main>
   )
 }
