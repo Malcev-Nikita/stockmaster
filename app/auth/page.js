@@ -7,7 +7,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 
 export default async function Page() {
     return (
-        <div className='catalogs__add'>
+        <div className='auth'>
             
         </div>
     )
