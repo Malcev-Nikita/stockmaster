@@ -6,6 +6,8 @@ header {
 }
 header .logo {
   width: 20%;
+  text-decoration: none;
+  color: #000;
 }
 header .menu {
   width: 60%;
