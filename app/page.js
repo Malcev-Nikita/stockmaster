@@ -1,3 +1,5 @@
+"use client"
+
 import Image from 'next/image'
 
 import { BsPencil } from "react-icons/bs";
@@ -12,9 +14,9 @@ async function getCatalogs() {
 export default async function Page() {
   const catalogs = await getCatalogs()
 
-  function getCatalog(id) {
-    // const res = await fetch(process.env.NEXT_PUBLIC_STRAPI_API_URL + '/api/stock-master-catalogs/:' + id)
-    console.log(1)
+  const getCatalog = async (id) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${id}?populate=images`)
+    console.log(res.json())
   }
 
   return (
@@ -26,7 +28,7 @@ export default async function Page() {
               <div className='media_container'>
                 <Image src={process.env.NEXT_PUBLIC_STRAPI_API_URL + catalog.attributes.images.data[0].attributes.url} width={600} height={600} alt="test"/>  
 
-                <button className='edit' onClick={getCatalog(catalog.id)}> <BsPencil/> </button>
+                <button className='edit' onClick={(e) => getCatalog(catalog.id)}> <BsPencil/> </button>
 
                 <div className='delete'><MdDeleteOutline/></div>
               </div>
