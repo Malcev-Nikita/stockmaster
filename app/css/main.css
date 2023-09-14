@@ -1,9 +1,11 @@
+@charset "UTF-8";
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 80px;
-  background-color: #171717;
+  width: 100%;
+  background-color: #222;
 }
 header .logo {
   width: 20%;
@@ -28,9 +30,30 @@ header .menu ul a {
   color: #fff;
   display: flex;
   align-items: center;
+  font-weight: 600;
+  transition: 0.3s;
 }
 header .menu ul li {
   list-style-type: none;
+  position: relative;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  /* Убираем подчеркивание */
+}
+header .menu ul li::after {
+  content: "";
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  /* Высота линии */
+  background-color: white;
+  /* Цвет подчеркивания при появлении линии*/
+  transition: width 0.5s;
+  /* Время эффекта */
 }
 header .auth {
   width: 20%;
@@ -52,6 +75,9 @@ header .auth {
 }
 .catalogs .catalog .media_container {
   position: relative;
+}
+.catalogs .catalog .media_container h2 {
+  color: #fff;
 }
 .catalogs .catalog .media_container .edit, .catalogs .catalog .media_container .delete {
   position: absolute;

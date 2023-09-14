@@ -3,7 +3,8 @@ header
     justify-content: space-around
     align-items: center
     height: 80px
-    background-color: #171717
+    width: 100%
+    background-color: #222
 
     .logo
         width: 20%
@@ -28,9 +29,33 @@ header
                 color: #fff
                 display: flex
                 align-items: center
+                font-weight: 600
+                transition: 0.3s
+
+                // &:hover
+                //     font-size: 17px
 
             li
                 list-style-type: none
+                position: relative
+                font-size: 16px
+                cursor: pointer
+                text-decoration: none
+                /* Убираем подчеркивание */
+
+                &::after
+                    content: ""
+                    width: 100%
+                    display: block
+                    position: absolute
+                    left: 0
+                    bottom: -3px
+                    height: 2px
+                    /* Высота линии */
+                    background-color: white
+                    /* Цвет подчеркивания при появлении линии*/
+                    transition: width 0.5s
+                    /* Время эффекта */
 
     .auth
         width: 20%
