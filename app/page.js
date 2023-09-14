@@ -6,6 +6,10 @@ import { BsPencil } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
+
+let idCatalogItem = null;
+
+
 async function getCatalogs() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs?populate=*`)
 
@@ -14,16 +18,14 @@ async function getCatalogs() {
   return res.json()
 }
 
-async function deleteCatalogsItem(id) {  
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${id}`, { method: 'DELETE' })
-  // fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs?populate=*`)
+async function deleteCatalogsItem() {  
+  console.log(idCatalogItem)
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${idCatalogItem}`, { method: 'DELETE' })
 
-  if (!res.ok) throw new Error('Failed to fetch data')
+  // if (!res.ok) throw new Error('Failed to fetch data')
   
-  return res.json()
+  // return res.json()
 }
-
-let idCatalogItem = null;
 
 function deleteConfirmed(id) {
   document.querySelector('.delete_confirmed').classList.add('active')
@@ -64,8 +66,10 @@ export default async function Page() {
         <div className='container'>
           <h6>Вы точно хотите удалить этот товар?</h6>
 
-          <button className='cancel' onClick={deleteConfirmedClose}>Отмена</button>
-          <button className='delete' onClick={deleteCatalogsItem}>Удалить</button>
+          <div className='buttons'>
+            <button className='cancel' onClick={deleteConfirmedClose}>Отмена</button>
+            <button className='delete' onClick={deleteCatalogsItem}>Удалить</button>
+          </div>
         </div>
       </div>
     </div>
