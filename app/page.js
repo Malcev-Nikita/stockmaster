@@ -12,6 +12,15 @@ async function getCatalogs() {
   return res.json()
 }
 
+async function deleteCatalogsItem() {  
+  const res = await fetch('https://example.com/delete-item/' + id, { method: 'DELETE' })
+  // fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs?populate=*`)
+
+  if (!res.ok) throw new Error('Failed to fetch data')
+  
+  return res.json()
+}
+
 export default async function Page() {
   const catalogs = await getCatalogs()
 
@@ -27,10 +36,8 @@ export default async function Page() {
           <div className='catalog' key={catalog.id}>
             <div className='media_container'>
               <a href={`/${catalog.attributes.slug}`}>
-                <Image src={process.env.NEXT_PUBLIC_STRAPI_API_URL + catalog.attributes.images.data[0].attributes.url} width={600} height={600} alt="test"/>  
+                <Image src={process.env.NEXT_PUBLIC_STRAPI_API_URL + catalog.attributes.images.data[0].attributes.url} width={600} height={600} alt={`${catalog.attributes.name}`}/>  
               </a>
-
-              <button className='edit'> <BsPencil/> </button>
 
               <div className='delete'><MdDeleteOutline/></div>
             </div>

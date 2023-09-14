@@ -16,7 +16,7 @@ export default function Header() {
         </nav>
 
         <div className='auth'>
-            <button>Авторизация</button>
+            <a href='/auth'>Авторизация</a>
         </div>
     </header>
   )

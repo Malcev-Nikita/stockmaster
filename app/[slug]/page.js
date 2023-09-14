@@ -17,7 +17,19 @@ export default async function Page({params}) {
 
     return (
         <div className='catalogs__item'>
-            
+            {console.log(data.data[0])}
+            <div className='catalogs__item_left'>
+                <Image 
+                    src={process.env.NEXT_PUBLIC_STRAPI_API_URL + data.data[0].attributes.images.data[0].attributes.url} 
+                    width={600} 
+                    height={600} 
+                    alt={`${data.data[0].attributes.name}`}
+                />             
+            </div>
+
+            <div className='catalogs__item_right'>
+
+            </div>
         </div>
     )
 }
