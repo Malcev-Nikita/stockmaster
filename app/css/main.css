@@ -11,7 +11,7 @@ header .logo {
   width: 20%;
   text-decoration: none;
   color: #fff;
-  text-align: center;
+  text-align: right;
 }
 header .menu {
   width: 60%;
@@ -106,9 +106,13 @@ header .auth a:hover {
   margin-top: 50px;
   background-color: #222;
 }
+.catalogs .delete_confirmed.active {
+  display: block;
+}
 .catalogs .delete_confirmed {
   width: 100vw;
   height: 100vh;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;

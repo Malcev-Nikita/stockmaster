@@ -6,40 +6,7 @@ import { BsPencil } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-
-async function getCatalogs() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs?populate=*`, { cache: 'no-store' })
-
-  if (!res.ok) throw new Error('Failed to fetch data')
-  
-  return res.json()
-}
-
-async function deleteCatalogsItem() {  
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${localStorage.getItem("idCatalogItem")}`, { method: 'DELETE' })
-
-  if (!res.ok) throw new Error('Failed to fetch data')
-
-  document.querySelector('.delete_confirmed').classList.remove('active')
-
-  location.reload()
-  
-  return res.json()
-}
-
-function deleteConfirmed(id) {
-  document.querySelector('.delete_confirmed').classList.add('active')
-  localStorage.setItem("idCatalogItem", id);
-}
-
-function deleteConfirmedClose() {
-  document.querySelector('.delete_confirmed').classList.remove('active')
-  localStorage.setItem("idCatalogItem", null);
-}
-
-export default async function Page() {
-  const catalogs = await getCatalogs()
-
+export default function Catalog() {
   return (
     <div className='catalogs'>
       {catalogs.data.map(catalog => {

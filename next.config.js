@@ -4,6 +4,9 @@ const nextConfig = {
     images: {
         domains: ['cms.studap.ru'],
     },
+    experimental: {
+        serverActions: true,
+    },
 }
 
 module.exports = nextConfig
