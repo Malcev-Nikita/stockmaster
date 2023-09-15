@@ -12,6 +12,11 @@ export default function EditComponent({data}) {
             <div className='edit_container'>
                 <label for="edit">Режим редактирования</label>
                 <input type='button' id="edit" value={edit ? "Выключить" : "Включить"} onClick={() => setEdit(!edit)}/>
+                {
+                    edit ? (
+                        <input type='button' id="save" value="Сохранить"/>
+                    ) : ""
+                }
             </div>
 
             {
