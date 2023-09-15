@@ -1,3 +1,4 @@
+@charset "UTF-8";
 header {
   display: flex;
   justify-content: space-around;
@@ -219,6 +220,77 @@ header .auth a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.edit_container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.edit_container label {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+.edit_container #edit {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid #3d3d3d;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.edit_container #edit:hover {
+  box-shadow: inset -1px 2px 20px 0px #0c631a;
+  background: #10a729;
+}
+.edit_container #edit[value=Включить] {
+  background: #0f9125;
+}
+.edit_container #edit[value=Выключить] {
+  background: #910f0f;
+}
+.edit_container #edit[value=Выключить]:hover {
+  box-shadow: inset -1px 2px 20px 0px #680c0c;
+  background: #a71010;
+}
+
+.catalogs__item {
+  display: flex;
+  flex-direction: row;
+}
+.catalogs__item_left img {
+  width: 350px;
+  height: 350px;
+}
+.catalogs__item_right {
+  margin-left: 70px;
+}
+.catalogs__item_right .description strong {
+  font-weight: 400;
+}
+.catalogs__item_right h2 {
+  color: #fff;
+}
+.catalogs__item_right p, .catalogs__item_right h3 {
+  color: #c5c5c5;
+}
+.catalogs__item_right p {
+  font-weight: 400;
+}
+.catalogs__item_right h2 {
+  margin: 0;
+}
+.catalogs__item_right b {
+  color: #fff;
+  font-weight: 600;
+}
+
+.catalogs_item_page {
+  width: 90%;
+  margin: 0 auto;
 }
 
 body, html {

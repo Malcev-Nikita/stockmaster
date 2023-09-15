@@ -130,3 +130,64 @@
             top: 50%
             left: 50%
             transform: translate(-50%, -50%)
+
+.edit_container
+    margin-top: 20px
+    margin-bottom: 20px
+    label
+        color: #fff
+        font-size: 18px
+        font-weight: 500
+        margin-right: 20px 
+    #edit
+        width: 120px
+        height: 40px
+        color: #fff  
+        border-radius: 8px 
+        font-weight: 600
+        border: 1px solid #3d3d3d
+        transition: 0.2s
+        cursor: pointer
+        &:hover
+            box-shadow: inset -1px 2px 20px 0px #0c631a
+            background: #10a729
+    #edit[value="Включить"]
+        background: #0f9125
+    #edit[value="Выключить"]
+        background: #910f0f
+        &:hover
+            box-shadow: inset -1px 2px 20px 0px #680c0c
+            background: #a71010
+        
+
+.catalogs__item
+    display: flex
+    flex-direction: row
+    &_left
+        img
+            width: 350px
+            height: 350px
+    &_right
+        margin-left: 70px
+        .description
+            strong
+                font-weight: 400
+        h2
+            color: #fff
+        p, h3
+            color: #c5c5c5
+        p
+            font-weight: 400
+        h2
+            margin: 0
+        b
+            color: #fff
+            font-weight: 600
+.catalogs_item_page
+    width: 90%
+    margin: 0 auto
+
+
+        
+    
+                
