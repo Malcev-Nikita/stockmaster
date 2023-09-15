@@ -16,7 +16,7 @@ async function getCatalogs() {
 }
 
 async function deleteCatalogsItem() {  
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${localStorage.getItem("idCatalogItem")}`, { method: 'DELETE' })
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${sessionStorage.getItem("idCatalogItem")}`, { method: 'DELETE' })
 
   if (!res.ok) throw new Error('Failed to fetch data')
 
@@ -29,12 +29,12 @@ async function deleteCatalogsItem() {
 
 function deleteConfirmed(id) {
   document.querySelector('.delete_confirmed').classList.add('active')
-  localStorage.setItem("idCatalogItem", id);
+  sessionStorage.setItem("idCatalogItem", id);
 }
 
 function deleteConfirmedClose() {
   document.querySelector('.delete_confirmed').classList.remove('active')
-  localStorage.setItem("idCatalogItem", null);
+  sessionStorage.setItem("idCatalogItem", null);
 }
 
 export default async function Page() {
