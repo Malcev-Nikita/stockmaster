@@ -30,7 +30,7 @@ export default function EditComponent({data}) {
                     <h3>Описание</h3>
                     <div className='description' dangerouslySetInnerHTML={{ __html: markdown.toHTML(data.attributes.description) }}></div>
 
-                    <p className='count'>Количество на складе: {data.attributes.count} шт.</p>
+                    <p className='count'>Количество на складе: <b>{data.attributes.count}</b> шт.</p>
                 </div>
             </div>
         </div>
