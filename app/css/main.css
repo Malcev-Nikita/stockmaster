@@ -291,6 +291,20 @@ header .auth a:hover {
   color: #fff;
   font-weight: 600;
 }
+.catalogs__item textarea[name=description] {
+  max-width: 600px;
+  min-width: 600px;
+  max-height: 500px;
+  min-height: 100px;
+}
+.catalogs__item input[name=count] {
+  width: 50px;
+  height: 25px;
+}
+.catalogs__item input[name=name] {
+  width: 300px;
+  height: 25px;
+}
 
 .catalogs_item_page {
   width: 90%;
