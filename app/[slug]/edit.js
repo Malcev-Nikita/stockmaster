@@ -47,7 +47,7 @@ export default function EditComponent({data}) {
                             <p className='count'>
                                 Количество на складе: 
                                     <b>
-                                        <input type='text' name='count' placeholder='Количество' className='catalogs__item_name' />
+                                        <input type='number' name='count' placeholder='Количество' className='catalogs__item_name' />
                                     </b>
                                 шт.
                             </p>
