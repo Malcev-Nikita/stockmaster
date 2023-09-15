@@ -61,7 +61,7 @@ export default async function Page() {
       <div className='catalog last_element'><AiOutlinePlusCircle/></div>
 
       <div className='delete_confirmed'>
-        <div className='fancy_close'></div>
+        <div className='fancy_close' onClick={deleteConfirmedClose}></div>
 
         <div className='container'>
           <h6>Вы точно хотите удалить этот товар?</h6>
