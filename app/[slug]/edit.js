@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import {markdown} from 'markdown';
 import Image from 'next/image'
 
+
 export default function EditComponent({data}) {
     const [edit, setEdit] = useState(false);
 
@@ -19,6 +20,12 @@ export default function EditComponent({data}) {
                 }
             </div>
 
+            {edit ? () => {
+                document.querySelector('input[name="name"]').value = data.attributes.name
+                document.querySelector('textarea[name="description"]').value = data.attributes.description
+                document.querySelector('input[name="count"]').value = data.attributes.count
+            } : ""}
+
             {
                 edit ? (
                     <div className='catalogs__item'>
@@ -32,15 +39,15 @@ export default function EditComponent({data}) {
                         </div>
 
                         <div className='catalogs__item_right'>
-                            <input type='text' name='name' value={data.attributes.name} placeholder='Название' className='catalogs__item_name' />
+                            <input type='text' name='name' placeholder='Название' className='catalogs__item_name' />
 
                             <h3>Описание</h3>
-                            <textarea name="description" value={data.attributes.description} placeholder='Описание'></textarea>
+                            <textarea name="description" placeholder='Описание'></textarea>
 
                             <p className='count'>
                                 Количество на складе: 
                                     <b>
-                                        <input type='text' name='count' value={data.attributes.count} placeholder='Количество' className='catalogs__item_name' />
+                                        <input type='text' name='count' placeholder='Количество' className='catalogs__item_name' />
                                     </b>
                                 шт.
                             </p>
