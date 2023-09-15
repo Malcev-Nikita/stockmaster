@@ -232,7 +232,7 @@ header .auth a:hover {
   font-weight: 500;
   margin-right: 20px;
 }
-.edit_container #edit {
+.edit_container #edit, .edit_container #save {
   width: 120px;
   height: 40px;
   color: #fff;
@@ -242,9 +242,13 @@ header .auth a:hover {
   transition: 0.2s;
   cursor: pointer;
 }
-.edit_container #edit:hover {
+.edit_container #edit:hover, .edit_container #save:hover {
   box-shadow: inset -1px 2px 20px 0px #0c631a;
   background: #10a729;
+}
+.edit_container #save {
+  background-color: #0f9125;
+  margin-left: 10px;
 }
 .edit_container #edit[value=Включить] {
   background: #0f9125;
