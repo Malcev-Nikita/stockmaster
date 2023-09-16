@@ -4,14 +4,18 @@ import React, { useState } from 'react';
 import {markdown} from 'markdown';
 import Image from 'next/image'
 
-async function updateCatalogsItem(id, data) {  
+async function updateCatalogsItem(id, nameFunc, descriptionFunc, countFunc) {  
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${id}`, { 
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            data: data
+            data: {
+                name: nameFunc,
+                description: descriptionFunc,
+                count: countFunc,
+            },
         }),
     })
   
@@ -36,13 +40,7 @@ export default function EditComponent({data}) {
                 <input type='button' id="edit" value={edit ? "Выключить" : "Включить"} onClick={() => setEdit(!edit)}/>
                 {
                     edit ? (
-                        <input type='button' id="save" value="Сохранить" onClick={() => updateCatalogsItem(data.id, {
-                            "data": {
-                              "name": name,
-                              "description": description,
-                              "count": count,
-                            }
-                        })}/>
+                        <input type='button' id="save" value="Сохранить" onClick={() => updateCatalogsItem(data.id, name, description, count)}/>
                     ) : ""
                 }
             </div>
