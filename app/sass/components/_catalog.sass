@@ -184,9 +184,15 @@
 .catalogs__item
     display: flex
     flex-direction: row
+
+    &_qrcode
+        width: 25%
+
+        svg
+            padding: 10px
+            background: #fff
+
     &_left
-        width: 350px
-        height: 350px
         display: flex
         justify-content: center
         align-items: center
@@ -200,8 +206,8 @@
             background: #fff
 
     &_right
-        margin-left: 70px
-        width: calc(100% - 420px)
+        padding-left: 50px
+        padding-right: 10%
 
         .description
             strong

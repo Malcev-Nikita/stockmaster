@@ -57,7 +57,7 @@ export default async function Page() {
         )
       })}
 
-      <div className='catalog last_element'><AiOutlinePlusCircle/></div>
+      <a className='catalog last_element' href="/add"><AiOutlinePlusCircle/></a>
 
       <div className='delete_confirmed'>
         <div className='fancy_close' onClick={deleteConfirmedClose}></div>

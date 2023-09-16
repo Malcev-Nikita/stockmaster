@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import {markdown} from 'markdown';
 import Image from 'next/image'
+import QRCode from 'react-qr-code';
 
 async function updateCatalogsItem(id, nameFunc, descriptionFunc, countFunc) {  
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${id}`, { 
@@ -32,6 +33,8 @@ export default function EditComponent({data}) {
     const [name, setName] = useState(data.attributes.name)
     const [description, setDescription] = useState(data.attributes.description)
     const [count, setCount] = useState(data.attributes.count)
+
+    console.log(data)
 
     return (
         <div className='catalogs_item_page'>
@@ -71,6 +74,15 @@ export default function EditComponent({data}) {
                                 шт.
                             </p>
                         </div>
+
+                        <div className='catalogs__item_qrcode'>
+                            <QRCode
+                                size={256}
+                                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                                value={data.attributes.slug}
+                                viewBox={`0 0 256 256`}
+                            />
+                        </div>
                     </div>
                 ) : (
                     <div className='catalogs__item'>
@@ -90,6 +102,15 @@ export default function EditComponent({data}) {
                             <div className='description' dangerouslySetInnerHTML={{ __html: markdown.toHTML(data.attributes.description) }}></div>
 
                             <p className='count'>Количество на складе: <b>{data.attributes.count}</b> шт.</p>
+                        </div>
+
+                        <div className='catalogs__item_qrcode'>
+                            <QRCode
+                                size={256}
+                                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                                value={data.attributes.slug}
+                                viewBox={`0 0 256 256`}
+                            />
                         </div>
                     </div>
                 )
