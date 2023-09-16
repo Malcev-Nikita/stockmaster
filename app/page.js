@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 
-import { BsPencil } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 

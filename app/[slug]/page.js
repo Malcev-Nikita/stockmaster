@@ -1,11 +1,5 @@
-import Image from 'next/image'
-import {markdown} from 'markdown';
-
 import EditComponent from './edit';
 
-import { BsPencil } from "react-icons/bs";
-import { MdDeleteOutline } from "react-icons/md";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 
 async function getData(slug) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs?filters[slug][$eqi]=${slug}&populate=*`, { cache: 'no-store' })
