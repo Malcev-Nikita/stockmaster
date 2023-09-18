@@ -84,9 +84,13 @@
     
     .catalog
         width: calc(20% - 100px)
-        border: 1px solid #fff
+        border: 1px solid #3d3d3d
         padding: 10px 20px
         border-radius: 0px 20px
+        transition: 0.2s
+        &:hover
+            border-radius: 20px 0px
+            border: 1px solid #fff
 
         h2
             color: #fff
