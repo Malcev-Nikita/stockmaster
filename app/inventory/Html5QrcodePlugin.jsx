@@ -1,11 +1,9 @@
-"use client"
-
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import { useEffect } from 'react';
 
 const qrcodeRegionId = "html5qr-code-full-region";
 
-
+// Creates the configuration object for Html5QrcodeScanner.
 const createConfig = (props) => {
     let config = {};
     if (props.fps) {
@@ -23,7 +21,8 @@ const createConfig = (props) => {
     return config;
 };
 
-export default async function QrCodeReader(props) {
+const Html5QrcodePlugin = (props) => {
+
     useEffect(() => {
         // when component mounts
         const config = createConfig(props);
@@ -46,4 +45,6 @@ export default async function QrCodeReader(props) {
     return (
         <div id={qrcodeRegionId} />
     );
-}
+};
+
+export default Html5QrcodePlugin;
