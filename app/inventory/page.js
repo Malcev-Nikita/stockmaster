@@ -1,29 +1,31 @@
 "use client"
 
+import React, { useState } from 'react';
+import Html5QrcodePlugin from './Html5QrcodePlugin.jsx';
+import ResultContainerPlugin from './ResultContainerPlugin.jsx';
 
-import Image from 'next/image'
-
-import { BsPencil } from "react-icons/bs";
-import { MdDeleteOutline } from "react-icons/md";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-
-import { Html5QrcodeSupportedFormats } from 'html5-qrcode';
-
-import QrCodeReader from './qrcode';
-
-
-export default async function Page() {
+export default function Page() {
+    const [decodedResults, setDecodedResults] = useState([]);
     const onNewScanResult = (decodedText, decodedResult) => {
-        // handle decoded results here
+        console.log("App [result]", decodedResult);
+        setDecodedResults(prev => [...prev, decodedResult]);
     };
 
     return (
-        <div className='inventory'>
-            <QrCodeReader fps={10}
-                qrbox={250}
-                disableFlip={false}
-                qrCodeSuccessCallback={onNewScanResult}
+        <div className="App">
+            <section className="App-section">
+                <div className="App-section-title">Html5-qrcode React demo</div>
+                <br />
+                <br />
+                <br />
+                <Html5QrcodePlugin
+                    fps={10}
+                    qrbox={250}
+                    disableFlip={false}
+                    qrCodeSuccessCallback={onNewScanResult}
                 />
+                <ResultContainerPlugin results={decodedResults} />
+            </section>
         </div>
-    )
-}
+    );
+};
