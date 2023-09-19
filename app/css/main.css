@@ -43,7 +43,7 @@ header .menu ul a:hover li::after {
 header .menu ul li {
   list-style-type: none;
   position: relative;
-  font-size: 16px;
+  font-size: 19px;
   cursor: pointer;
   text-decoration: none;
 }
@@ -218,9 +218,10 @@ footer {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  border: 2px solid #fff;
   bottom: 12px;
   cursor: pointer;
-  background: #ee0b0b;
+  background: #1b1b1b;
   right: 10px;
 }
 .catalogs .catalog .media_container .delete svg {
@@ -237,11 +238,14 @@ footer {
      object-position: center;
 }
 .catalogs .last_element {
-  background: #36e600;
+  background: #27800b;
   position: relative;
   border-radius: 8px;
   box-shadow: 6px 6px 15px 3px #000;
   cursor: pointer;
+}
+.catalogs .last_element:hover {
+  background-color: #319911;
 }
 .catalogs .last_element svg {
   fill: #fff;
@@ -309,7 +313,7 @@ footer {
   align-items: center;
 }
 .catalogs__item_left img {
-  width: 100%;
+  width: 400px;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
@@ -327,6 +331,8 @@ footer {
 }
 .catalogs__item_right h2 {
   color: #fff;
+  margin: 0;
+  font-size: 26px;
 }
 .catalogs__item_right p, .catalogs__item_right h3 {
   color: #c5c5c5;
@@ -334,12 +340,12 @@ footer {
 .catalogs__item_right p {
   font-weight: 400;
 }
-.catalogs__item_right h2 {
-  margin: 0;
-}
 .catalogs__item_right b {
   color: #fff;
   font-weight: 600;
+}
+.catalogs__item_right p, .catalogs__item_right h3, .catalogs__item_right b {
+  font-size: 19px;
 }
 .catalogs__item textarea[name=description] {
   max-width: 600px;
