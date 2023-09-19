@@ -367,6 +367,54 @@ footer {
   margin: 0 auto;
 }
 
+.inventory img[alt="Info icon"] {
+  display: none;
+}
+.inventory img[alt="Camera based scan"], .inventory img[alt="Fule based scan"] {
+  filter: invert(1);
+}
+.inventory #html5-qrcode-anchor-scan-type-change {
+  color: #fff;
+  margin-top: 10px;
+}
+.inventory .Result-container {
+  color: #fff;
+}
+.inventory #html5-qrcode-button-camera-permission, .inventory #html5-qrcode-button-file-selection {
+  padding: 0 12px;
+  height: 48px;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+.inventory #html5-qrcode-button-file-selection {
+  margin-bottom: 10px;
+}
+.inventory #html5qr-code-full-region__dashboard_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  color: #fff;
+}
+.inventory #html5qr-code-full-region__dashboard_section div {
+  width: 100%;
+}
+.inventory #html5qr-code-full-region__dashboard_section div div {
+  border: none !important;
+}
+.inventory #html5qr-code-full-region {
+  border: none !important;
+  margin-top: 70px;
+}
+.inventory #html5qr-code-full-region__header_message {
+  border-top: none !important;
+}
+
 body, html {
   margin: 0;
   background-color: #222;
