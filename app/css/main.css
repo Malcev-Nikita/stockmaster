@@ -131,7 +131,7 @@ footer {
   opacity: 0.8;
   background-color: #000;
   z-index: 2;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -148,7 +148,7 @@ footer {
   justify-content: center;
   z-index: 3;
   align-items: center;
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

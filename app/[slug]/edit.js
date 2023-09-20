@@ -34,8 +34,6 @@ export default function EditComponent({data}) {
     const [description, setDescription] = useState(data.attributes.description)
     const [count, setCount] = useState(data.attributes.count)
 
-    console.log(data)
-
     return (
         <div className='catalogs_item_page'>
             <div className='edit_container'>
