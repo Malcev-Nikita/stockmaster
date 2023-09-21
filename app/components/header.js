@@ -10,7 +10,7 @@ export default function Header() {
         <nav className='menu'>
             <ul>
                 <a href="/"><li>Каталог</li></a>
-                <a href="#"><li>Добавить товар</li></a>
+                {/* <a href="#"><li>Добавить товар</li></a> */}
                 <a href="/inventory"><li>Провести инвентаризацию</li></a>
             </ul>
         </nav>

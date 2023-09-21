@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import {markdown} from 'markdown';
 import Image from 'next/image'
 import QRCode from 'react-qr-code';
+import anime from 'animejs/lib/anime.es.js';
 
 async function updateCatalogsItem(id, nameFunc, descriptionFunc, countFunc) {  
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs/${id}`, { 
@@ -25,7 +26,7 @@ async function updateCatalogsItem(id, nameFunc, descriptionFunc, countFunc) {
     location.reload()
     
     return res.json()
-  }
+}
 
 
 export default function EditComponent({data}) {
@@ -33,6 +34,18 @@ export default function EditComponent({data}) {
     const [name, setName] = useState(data.attributes.name)
     const [description, setDescription] = useState(data.attributes.description)
     const [count, setCount] = useState(data.attributes.count)
+
+    const [img, setImg] = useState(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + data.attributes.images.data[0].attributes.url}`)
+
+    function updateImg(url) {
+        document.querySelector('.catalogs__item_left_image .fancy').style.background = "#000000ee"
+
+        setTimeout(() => {
+            document.querySelector('.catalogs__item_left_image .fancy').style.background = "#00000000"
+
+            setImg(url)
+        }, 300);
+    }
 
     return (
         <div className='catalogs_item_page'>
@@ -50,12 +63,30 @@ export default function EditComponent({data}) {
                 edit ? (
                     <div className='catalogs__item'>
                         <div className='catalogs__item_left'>
-                            <Image 
-                                src={process.env.NEXT_PUBLIC_STRAPI_API_URL + data.attributes.images.data[0].attributes.url} 
-                                width={600} 
-                                height={600} 
-                                alt={`${data.attributes.name}`}
-                            />             
+                            <div className='catalogs__item_left_image'>
+                                <div className='fancy'></div>
+                                <Image 
+                                    src={img} 
+                                    width={600} 
+                                    height={600} 
+                                    alt={`${data.attributes.name}`}
+                                /> 
+                            </div>   
+
+                            <div className='slider'>
+                                {data.attributes.images.data.map(img => {
+                                    return (
+                                        <div className='slider_item' onClick={() => updateImg(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url}`)}>
+                                            <Image 
+                                                src={process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url} 
+                                                width={120} 
+                                                height={120} 
+                                                alt={`${img.attributes.name}`}
+                                            />
+                                        </div>
+                                    )
+                                })}    
+                            </div>         
                         </div>
 
                         <div className='catalogs__item_right'>
@@ -85,12 +116,30 @@ export default function EditComponent({data}) {
                 ) : (
                     <div className='catalogs__item'>
                         <div className='catalogs__item_left'>
-                            <Image 
-                                src={process.env.NEXT_PUBLIC_STRAPI_API_URL + data.attributes.images.data[0].attributes.url} 
-                                width={600} 
-                                height={600} 
-                                alt={`${data.attributes.name}`}
-                            />             
+                            <div className='catalogs__item_left_image'>
+                                <div className='fancy'></div>
+                                <Image 
+                                    src={img} 
+                                    width={600} 
+                                    height={600} 
+                                    alt={`${data.attributes.name}`}
+                                /> 
+                            </div>   
+
+                            <div className='slider'>
+                                {data.attributes.images.data.map(img => {
+                                    return (
+                                        <div className='slider_item' onClick={() => updateImg(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url}`)}>
+                                            <Image 
+                                                src={process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url} 
+                                                width={120} 
+                                                height={120} 
+                                                alt={`${img.attributes.name}`}
+                                            />
+                                        </div>
+                                    )
+                                })}    
+                            </div>          
                         </div>
 
                         <div className='catalogs__item_right'>
