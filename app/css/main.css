@@ -1,10 +1,13 @@
 @charset "UTF-8";
 header {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 80px;
   width: 100%;
+  z-index: 100;
   background-color: #181818;
 }
 header .logo {
@@ -20,8 +23,10 @@ header .menu {
 }
 header .menu ul {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  gap: 80px;
   margin: 0;
+  margin-left: 220px;
   padding: 0;
   height: 100%;
 }
@@ -88,6 +93,15 @@ header .auth a:hover {
 
 footer {
   height: 80px;
+  display: flex;
+  justify-content: end;
+}
+footer .arrow_up {
+  margin-right: 50px;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  border: none;
 }
 
 .catalogs {
@@ -101,10 +115,12 @@ footer {
   background-color: #222;
 }
 .catalogs input[name=search] {
-  width: 300px;
+  width: 200px;
   height: 40px;
-  position: absolute;
-  top: 110px;
+  position: fixed;
+  z-index: 101;
+  top: 20px;
+  right: 340px;
   border-radius: 8px;
   border: 1px #fff solid;
   background: transparent;
@@ -194,6 +210,7 @@ footer {
   padding: 10px 20px;
   border-radius: 0px 20px;
   transition: 0.2s;
+  height: 310px;
 }
 .catalogs .catalog:hover {
   border-radius: 20px 0px;
@@ -257,6 +274,7 @@ footer {
   border-radius: 8px;
   box-shadow: 6px 6px 15px 3px #000;
   cursor: pointer;
+  height: 300px;
 }
 .catalogs .last_element:hover {
   background-color: #319911;
