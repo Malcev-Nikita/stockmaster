@@ -24,9 +24,9 @@ header .menu {
 header .menu ul {
   display: flex;
   justify-content: flex-start;
-  gap: 80px;
+  gap: 40px;
   margin: 0;
-  margin-left: 220px;
+  margin-left: 80px;
   padding: 0;
   height: 100%;
 }
@@ -48,7 +48,7 @@ header .menu ul a:hover li::after {
 header .menu ul li {
   list-style-type: none;
   position: relative;
-  font-size: 19px;
+  font-size: 16px;
   cursor: pointer;
   text-decoration: none;
 }
@@ -96,7 +96,11 @@ footer {
   display: flex;
   justify-content: end;
 }
+footer .arrow_up.active {
+  right: 0px;
+}
 footer .arrow_up {
+  display: block;
   margin-right: 50px;
   border-radius: 100px;
   width: 50px;
@@ -105,6 +109,10 @@ footer .arrow_up {
   border: 1px solid #444;
   cursor: pointer;
   transition: 0.2s;
+  position: fixed;
+  right: -100px;
+  bottom: 50px;
+  transition: 0.3s;
 }
 footer .arrow_up:hover {
   background-color: #474747;
@@ -461,6 +469,61 @@ footer .arrow_up svg {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+}
+.auth .content {
+  position: absolute;
+  z-index: 1;
+  width: 390px;
+  height: 400px;
+  top: calc(50% + 80px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(37, 37, 37, 0.9254901961);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2941176471);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: inset 0px 0px 20px 3px #121212;
+}
+.auth .content h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  margin-bottom: 30px;
+}
+.auth .content input {
+  width: 230px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px rgba(255, 255, 255, 0.5019607843) solid;
+  background: transparent;
+  padding: 0px 15px;
+  color: #fff;
+  margin: 8px 0;
+}
+.auth .content button {
+  color: #fff;
+  width: 165px;
+  height: 43px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 14px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+.auth .content button:hover {
+  background-color: #474747;
+  box-shadow: inset -1px 2px 20px 0px #121212;
 }
 
 .inventory img[alt="Info icon"] {

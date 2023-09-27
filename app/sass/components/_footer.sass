@@ -2,7 +2,12 @@ footer
     height: 80px
     display: flex
     justify-content: end
+
+    .arrow_up.active
+        right: 0px
+
     .arrow_up
+        display: block
         margin-right: 50px
         border-radius: 100px
         width: 50px
@@ -11,6 +16,10 @@ footer
         border: 1px solid #444
         cursor: pointer
         transition: 0.2s
+        position: fixed
+        right: -100px
+        bottom: 50px
+        transition: 0.3s
 
         &:hover
             background-color: #474747
