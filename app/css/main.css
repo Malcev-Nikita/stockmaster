@@ -113,8 +113,9 @@ footer .arrow_up:hover {
 footer .arrow_up svg {
   width: 30px;
   height: 40px;
-  stroke: #fff;
+  fill: #fff;
 }
+
 .catalogs {
   display: flex;
   justify-content: flex-start;
@@ -280,7 +281,7 @@ footer .arrow_up svg {
      object-position: center;
 }
 .catalogs .last_element {
-  background: #27800b;
+  background: #319911;
   position: relative;
   border-radius: 8px;
   box-shadow: 6px 6px 15px 3px #000;
@@ -288,7 +289,7 @@ footer .arrow_up svg {
   height: 300px;
 }
 .catalogs .last_element:hover {
-  background-color: #319911;
+  background-color: #35a812;
 }
 .catalogs .last_element svg {
   fill: #fff;
@@ -450,6 +451,16 @@ footer .arrow_up svg {
 .catalogs_item_page {
   width: 90%;
   margin: 0 auto;
+}
+
+.auth {
+  width: 100%;
+  margin: 0;
+  height: 86vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .inventory img[alt="Info icon"] {
