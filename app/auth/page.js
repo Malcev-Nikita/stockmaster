@@ -13,12 +13,19 @@ function Auth(email, password) {
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     
     if(email.match(emailRegex) && password.length >= 3) {
-        document.querySelector('.auth_succes').classList.add('active')
+      document.querySelector('.auth_succes').classList.add('active')
     }
     else {
-        document.querySelector('.auth_error').classList.add('active')
+      document.querySelector('.auth_error').classList.add('active')
     }
 }
+
+function fancyClose() {
+  document.querySelector('.delete_confirmed').classList.remove('active')
+  document.querySelector('body').style.overflow = "auto"
+  sessionStorage.setItem("idCatalogItem", null);
+}
+
 
 export default function Page() {
   const [email, setEmail] = useState("")
@@ -161,7 +168,7 @@ export default function Page() {
       </div>
 
       <div className='auth_error'>
-          <div className='fancy_close'></div>
+          <div className='fancy_close' onClick={fancyClose}></div>
 
           <div className='container'>
               <h6>Ошибка, повторите попытку позже!</h6>
