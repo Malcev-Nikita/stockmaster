@@ -493,8 +493,10 @@ footer .arrow_up svg {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.auth_error-active, .auth_succes-active {
+.auth .auth_success.active, .auth .auth_error.active {
   display: block;
+  font-size: 26px;
+  text-align: center;
 }
 .auth .fancy_close {
   width: 100%;
