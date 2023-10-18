@@ -17,7 +17,7 @@ export default function AuthButton() {
         return (
             <div className='auth profile'>
                 <a href='/profile'>
-                    <div>{data.surname} {data.name} {data.patronymic}</div>
+                    <div>{data.name}</div>
 
                     <Image width="60" height="60" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${data.avatar[0].url}`} alt=''/>
                 </a>

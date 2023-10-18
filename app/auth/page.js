@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
+import AuthContent from './authContent';
 
 const options = {
     //options
@@ -54,15 +55,9 @@ function authUser(email, password) {
         Authorization: `Bearer ${data.jwt}`,
       },
     })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Network response was not ok');
-      }
-    })
     .then((dataUser) => {
       localStorage.setItem('User_Data', JSON.stringify(dataUser));
+      document.location.reload();
     })
     .catch((error) => {});
   })
@@ -200,14 +195,7 @@ export default function Page() {
           }}
       />
 
-      <div className='content'>
-        <h2>Авторизация</h2>
-
-        <input type="email" name="EMAIL" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" name="PASSWORD" placeholder="Пароль" onChange={(e) => setPassword(e.target.value)}/>
-
-        <button onClick={() => Auth(email, password)}>Авторизация</button>
-      </div>
+      <AuthContent/>
 
       <div className='auth_error'>
           <div className='fancy_close' onClick={fancyClose}></div>
