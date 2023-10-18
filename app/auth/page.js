@@ -21,9 +21,9 @@ function Auth(email, password) {
 }
 
 function fancyClose() {
-  document.querySelector('.delete_confirmed').classList.remove('active')
+  document.querySelector('.auth_error').classList.remove('active')
+  document.querySelector('.auth_succes').classList.remove('active')
   document.querySelector('body').style.overflow = "auto"
-  sessionStorage.setItem("idCatalogItem", null);
 }
 
 
@@ -176,7 +176,7 @@ export default function Page() {
         </div>
 
         <div className='auth_succes'>
-          <div className='fancy_close'></div>
+          <div className='fancy_close' onClick={fancyClose}></div>
 
           <div className='container'>
               <h6>Вы авторизовались в системе!</h6>
