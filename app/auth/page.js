@@ -13,7 +13,7 @@ function Auth(email, password) {
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     
     if(email.match(emailRegex) && password.length >= 3) {
-      document.querySelector('.auth_succes').classList.add('active')
+      authUser(email, password)
     }
     else {
       document.querySelector('.auth_error').classList.add('active')
@@ -26,19 +26,61 @@ function fancyClose() {
   document.querySelector('body').style.overflow = "auto"
 }
 
+function authUser(email, password) {
+  fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/auth/local`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      identifier: email,
+      password: password,
+    }),
+  })
+  .then(async (response) => {
+    if (response.ok) {
+      document.querySelector('.auth_succes').classList.add('active');
+      return response.json();
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  })
+  .then((data) => {
+    localStorage.setItem('User_JWT', data.jwt);
+
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/users/me?populate=avatar`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${data.jwt}`,
+      },
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    })
+    .then((dataUser) => {
+      localStorage.setItem('User_Data', JSON.stringify(dataUser));
+    })
+    .catch((error) => {});
+  })
+  .catch((error) => {
+    document.querySelector('.auth_error').classList.add('active');
+  });
+}
+
 
 export default function Page() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("") 
 
   const particlesInit = useCallback(async engine => {
-      console.log(engine);
       await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async container => {
-      await console.log(container);
-  }, []);
+  const particlesLoaded = useCallback(async container => {}, []);
 
   return (
     <div className='auth'>

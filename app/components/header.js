@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import AuthButton from './authButton'
+
 export default function Header() {
   return (
     <header>
@@ -15,9 +17,7 @@ export default function Header() {
             </ul>
         </nav>
 
-        <div className='auth'>
-            <a href='/auth'>Авторизация</a>
-        </div>
+        <AuthButton/>
     </header>
   )
 }

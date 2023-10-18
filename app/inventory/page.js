@@ -7,7 +7,6 @@ import ResultContainerPlugin from './ResultContainerPlugin.jsx';
 export default function Page() {
     const [decodedResults, setDecodedResults] = useState([]);
     const onNewScanResult = (decodedText, decodedResult) => {
-        console.log("App [result]", decodedResult);
         setDecodedResults(prev => [...prev, decodedResult]);
     };
 
