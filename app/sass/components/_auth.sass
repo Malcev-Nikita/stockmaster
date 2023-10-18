@@ -16,8 +16,8 @@
             height: 110px
             color: #fff
             background-color: #222
-            border: 2px solid #fff
-            border-radius: 8px
+            // border: 2px solid #fff
+            // border-radius: 10px
             padding: 20px
             display: flex
             flex-direction: column
@@ -28,9 +28,18 @@
             left: 50%
             top: 50%
             transform: translate(-50%, -50%)
+            overflow: hidden
+            border: 10px solid transparent
+            border-image-slice: 1
+            border-image-width: 3px
+            border-image-outset: 0
+            border-radius: 10px
+            animation: borderGradientRed 5s linear infinite 
 
-    &_error-active, &_succes-active
+    .auth_success.active, .auth_error.active
         display: block
+        font-size: 26px
+        text-align: center
 
     .fancy_close
         width: 100%
@@ -95,3 +104,23 @@
             &:hover
                 background-color: #474747
                 box-shadow: inset -1px 2px 20px 0px #121212
+
+@keyframes borderGradient 
+    0% 
+        border-image-source: linear-gradient(45deg, #000, #fff)
+    
+    50% 
+        border-image-source: linear-gradient(100deg, #fff, #000)
+    
+    100% 
+        border-image-source: linear-gradient(45deg, #000, #fff)
+        
+@keyframes borderGradientRed 
+    0% 
+        border-image-source: linear-gradient(0deg, #00000000 10%, #d20e0e 100%)
+    
+    50% 
+        border-image-source: linear-gradient(180deg, #00000000 10%, #d20e0e 100%)
+
+    100% 
+        border-image-source: linear-gradient(0deg, #00000000 10%, #d20e0e 100%)

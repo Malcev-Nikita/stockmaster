@@ -189,6 +189,13 @@ footer .arrow_up svg {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  border: 10px solid transparent;
+  border-image-slice: 1;
+  border-image-width: 3px;
+  border-image-outset: 0;
+  border-radius: 10px;
+  -webkit-animation: borderGradient 5s linear infinite;
+          animation: borderGradient 5s linear infinite;
 }
 .catalogs .delete_confirmed .container h6 {
   text-align: center;
@@ -462,6 +469,29 @@ footer .arrow_up svg {
   margin: 0 auto;
 }
 
+@-webkit-keyframes borderGradient {
+  0% {
+    border-image-source: linear-gradient(45deg, #000, #fff);
+  }
+  50% {
+    border-image-source: linear-gradient(100deg, #fff, #000);
+  }
+  100% {
+    border-image-source: linear-gradient(45deg, #000, #fff);
+  }
+}
+
+@keyframes borderGradient {
+  0% {
+    border-image-source: linear-gradient(45deg, #000, #fff);
+  }
+  50% {
+    border-image-source: linear-gradient(100deg, #fff, #000);
+  }
+  100% {
+    border-image-source: linear-gradient(45deg, #000, #fff);
+  }
+}
 .auth {
   width: 100%;
   margin: 0;
@@ -480,8 +510,6 @@ footer .arrow_up svg {
   height: 110px;
   color: #fff;
   background-color: #222;
-  border: 2px solid #fff;
-  border-radius: 8px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -492,9 +520,19 @@ footer .arrow_up svg {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  overflow: hidden;
+  border: 10px solid transparent;
+  border-image-slice: 1;
+  border-image-width: 3px;
+  border-image-outset: 0;
+  border-radius: 10px;
+  -webkit-animation: borderGradientRed 5s linear infinite;
+          animation: borderGradientRed 5s linear infinite;
 }
-.auth_error-active, .auth_succes-active {
+.auth .auth_success.active, .auth .auth_error.active {
   display: block;
+  font-size: 26px;
+  text-align: center;
 }
 .auth .fancy_close {
   width: 100%;
@@ -561,6 +599,39 @@ footer .arrow_up svg {
   box-shadow: inset -1px 2px 20px 0px #121212;
 }
 
+@keyframes borderGradient {
+  0% {
+    border-image-source: linear-gradient(45deg, #000, #fff);
+  }
+  50% {
+    border-image-source: linear-gradient(100deg, #fff, #000);
+  }
+  100% {
+    border-image-source: linear-gradient(45deg, #000, #fff);
+  }
+}
+@-webkit-keyframes borderGradientRed {
+  0% {
+    border-image-source: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
+  }
+  50% {
+    border-image-source: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
+  }
+  100% {
+    border-image-source: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
+  }
+}
+@keyframes borderGradientRed {
+  0% {
+    border-image-source: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
+  }
+  50% {
+    border-image-source: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
+  }
+  100% {
+    border-image-source: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
+  }
+}
 .inventory img[alt="Info icon"] {
   display: none;
 }
