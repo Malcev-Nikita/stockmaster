@@ -63,6 +63,7 @@
             left: 50%
             top: 50%
             transform: translate(-50%, -50%)
+            animation: borderGradient 5s linear infinite
 
             h6
                 text-align: center
@@ -313,3 +314,13 @@
 .catalogs_item_page
     width: 90%
     margin: 0 auto                
+
+@keyframes borderGradient 
+    0% 
+        border-image-source: linear-gradient(45deg, #000, #fff)
+    
+    50% 
+        border-image-source: linear-gradient(100deg, #fff, #000)
+    
+    100% 
+        border-image-source: linear-gradient(45deg, #000, #fff)

@@ -16,12 +16,8 @@
             height: 110px
             color: #fff
             background-color: #222
-            border: 10px solid transparent
-            border-image-slice: 1
-            border-image-width: 10px
-            border-image-outset: 0
-            animation: borderGradient 5s linear infinite
-            border-radius: 10px
+            // border: 2px solid #fff
+            // border-radius: 10px
             padding: 20px
             display: flex
             flex-direction: column
@@ -32,33 +28,13 @@
             left: 50%
             top: 50%
             transform: translate(-50%, -50%)
-            
-            @keyframes borderGradient {
-                0% 
-                    border-image-source: linear-gradient(45deg, #ff6a00, #ee0979, #9c27b0)
-                
-                25% 
-                    border-image-source: linear-gradient(45deg, #ff6a00, #ee0979, #9c27b0)
-                
-                50% 
-                    border-image-source: linear-gradient(45deg, #9c27b0, #3f51b5, #03a9f4)
-                
-                75% 
-                    border-image-source: linear-gradient(45deg, #03a9f4, #009688, #4caf50)
-                
-                100% 
-                    border-image-source: linear-gradient(45deg, #4caf50, #ffeb3b, #ff6a00)
-                
-                // /* Apply the animation to an element with a border */
-                // .animated-border 
-                //     width: 200px
-                //     height: 200px
-                //     border: 10px solid transparent
-                //     border-image-slice: 1
-                //     border-image-width: 10px
-                //     border-image-outset: 0
-                //     animation: borderGradient 5s linear infinite
-                
+            overflow: hidden
+            border: 10px solid transparent
+            border-image-slice: 1
+            border-image-width: 3px
+            border-image-outset: 0
+            border-radius: 10px
+            animation: borderGradientRed 5s linear infinite 
 
     .auth_success.active, .auth_error.active
         display: block
@@ -128,3 +104,23 @@
             &:hover
                 background-color: #474747
                 box-shadow: inset -1px 2px 20px 0px #121212
+
+@keyframes borderGradient 
+    0% 
+        border-image-source: linear-gradient(45deg, #000, #fff)
+    
+    50% 
+        border-image-source: linear-gradient(100deg, #fff, #000)
+    
+    100% 
+        border-image-source: linear-gradient(45deg, #000, #fff)
+        
+@keyframes borderGradientRed 
+    0% 
+        border-image-source: linear-gradient(0deg, #00000000 10%, #d20e0e 100%)
+    
+    50% 
+        border-image-source: linear-gradient(180deg, #00000000 10%, #d20e0e 100%)
+
+    100% 
+        border-image-source: linear-gradient(0deg, #00000000 10%, #d20e0e 100%)
