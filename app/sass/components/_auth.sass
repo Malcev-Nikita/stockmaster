@@ -8,6 +8,13 @@
     flex-direction: column
     position: relative
 
+    &.profile
+        img
+            position: fixed
+            color: transparent
+            right: 30px
+            border-radius: 50px
+
     &_error, &_succes
         display: none
 
@@ -114,7 +121,7 @@
     
     100% 
         border-image-source: linear-gradient(45deg, #000, #fff)
-        
+
 @keyframes borderGradientRed 
     0% 
         border-image-source: linear-gradient(0deg, #00000000 10%, #d20e0e 100%)

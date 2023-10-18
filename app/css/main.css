@@ -502,6 +502,12 @@ footer .arrow_up svg {
   flex-direction: column;
   position: relative;
 }
+.auth.profile img {
+  position: fixed;
+  color: transparent;
+  right: 30px;
+  border-radius: 50px;
+}
 .auth_error, .auth_succes {
   display: none;
 }
