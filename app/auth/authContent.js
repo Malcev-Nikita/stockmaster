@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 function Auth(email, password) {
@@ -15,35 +16,31 @@ function Auth(email, password) {
 }
 
 function authUser(email, password) {
-  fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/auth/local`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      identifier: email,
-      password: password,
-    }),
+  axios.post(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/auth/local`, {
+    identifier: email,
+    password: password,
   })
-  .then((data) => {
-    localStorage.setItem('User_JWT', data.jwt);
+  .then(async response => {
+    localStorage.setItem('User_JWT', response.data.jwt);
+    getAvatar(response.data.jwt)
   })
-  .catch((error) => {
+  .catch(error => {
     document.querySelector('.auth_error').classList.add('active');
   });
+}
 
-
-  fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/users/me?populate=avatar`, {
-    method: 'GET',
+function getAvatar(JWT) {
+  axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/users/me?populate=avatar`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('User_JWT')}`,
+      Authorization: `Bearer ${JWT}`,
     },
   })
-  .then((data) => {
-    localStorage.setItem('User_Data', JSON.stringify(data));
-    document.location.reload();
+  .then(response => {
+    localStorage.setItem('User_Data', JSON.stringify(response.data));
+
+    window.location.href = '/'
   })
-  .catch((error) => {
+  .catch(error => {
     document.querySelector('.auth_error').classList.add('active');
   });
 }
