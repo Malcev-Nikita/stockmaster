@@ -8,7 +8,9 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 export default async function Page() {
     return (
         <div className='profile'>
-            
+            <div className='container'>
+                
+            </div>
         </div>
     )
 }
