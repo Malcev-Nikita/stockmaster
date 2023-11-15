@@ -68,8 +68,8 @@ function authUser(email, password) {
 
 
 export default function Page() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("") 
+  // const [email, setEmail] = useState("")
+  // const [password, setPassword] = useState("") 
 
   const particlesInit = useCallback(async engine => {
       await loadSlim(engine);

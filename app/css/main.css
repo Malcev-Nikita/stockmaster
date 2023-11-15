@@ -194,8 +194,7 @@ footer .arrow_up svg {
   border-image-width: 3px;
   border-image-outset: 0;
   border-radius: 10px;
-  -webkit-animation: borderGradient 5s linear infinite;
-          animation: borderGradient 5s linear infinite;
+  animation: borderGradient 5s linear infinite;
 }
 .catalogs .delete_confirmed .container h6 {
   text-align: center;
@@ -467,18 +466,7 @@ footer .arrow_up svg {
 .catalogs_item_page {
   width: 90%;
   margin: 0 auto;
-}
-
-@-webkit-keyframes borderGradient {
-  0% {
-    border-image-source: linear-gradient(45deg, #000, #fff);
-  }
-  50% {
-    border-image-source: linear-gradient(100deg, #fff, #000);
-  }
-  100% {
-    border-image-source: linear-gradient(45deg, #000, #fff);
-  }
+  margin-top: 100px;
 }
 
 @keyframes borderGradient {
@@ -505,8 +493,21 @@ footer .arrow_up svg {
 .auth.profile img {
   position: fixed;
   color: transparent;
-  right: 30px;
+  right: 60px;
   border-radius: 50px;
+}
+.auth.profile a {
+  background-color: transparent;
+  border: none;
+  text-align: right;
+  padding-right: 40px;
+}
+.auth.profile a:hover {
+  padding: 7px 40px 7px 0px;
+}
+.auth.profile .username {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
 }
 .auth_error, .auth_succes {
   display: none;
@@ -532,8 +533,7 @@ footer .arrow_up svg {
   border-image-width: 3px;
   border-image-outset: 0;
   border-radius: 10px;
-  -webkit-animation: borderGradientRed 5s linear infinite;
-          animation: borderGradientRed 5s linear infinite;
+  animation: borderGradientRed 5s linear infinite;
 }
 .auth .auth_success.active, .auth .auth_error.active {
   display: block;
@@ -616,17 +616,6 @@ footer .arrow_up svg {
     border-image-source: linear-gradient(45deg, #000, #fff);
   }
 }
-@-webkit-keyframes borderGradientRed {
-  0% {
-    border-image-source: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
-  }
-  50% {
-    border-image-source: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
-  }
-  100% {
-    border-image-source: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
-  }
-}
 @keyframes borderGradientRed {
   0% {
     border-image-source: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, #d20e0e 100%);
@@ -680,7 +669,7 @@ footer .arrow_up svg {
 }
 .inventory #html5qr-code-full-region {
   border: none !important;
-  margin-top: 70px;
+  margin-top: 90px;
 }
 .inventory #html5qr-code-full-region__header_message {
   border-top: none !important;
