@@ -46,9 +46,9 @@ const ResultContainerPlugin = (props) => {
     return (
         <div className='Result-container'>
             <div className='Result-header'>Scanned results ({results.length})</div>
-            <div className='Result-section'>
+            {/* <div className='Result-section'>
                 <ResultContainerTable data={results} />
-            </div>
+            </div> */}
         </div>
     );
 };

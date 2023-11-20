@@ -1,36 +1,28 @@
-'use client'
+"use client"
 
-import axios from 'axios';
+import React, { useState } from 'react';
+import Html5QrcodePlugin from './Html5QrcodePlugin.jsx';
+import ResultContainerPlugin from './ResultContainerPlugin.jsx';
+import generatePDF from './PDFGenerate.js';
 
-
-async function getCatalogs() {
-    let res = ''
-
-    axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs`)
-        .then((response) => {
-            // console.log(response.data)
-            res = response.data;
-        })
-        .catch((error) => {
-            res = error;
-        });
-
-    return res.json();
-}
-
-export default async function Page() {
-    const catalogs = await getCatalogs();
-    console.log(catalogs)
+export default function Page() {
+    const [decodedResults, setDecodedResults] = useState([]);
+    const onNewScanResult = (decodedText, decodedResult) => {
+        setDecodedResults(prev => [...prev, decodedResult]);
+    };
 
     return (
         <div className="inventory">
-            {
-                // catalogs.map(item => (
-                //     <div>
-                //         <h3>{item.id}</h3>
-                //     </div>
-                // ))
-            }
+            <Html5QrcodePlugin
+                fps={10}
+                qrbox={250}
+                disableFlip={false}
+                qrCodeSuccessCallback={onNewScanResult}
+                rememberLastUsedCamera={false}
+            />
+            <ResultContainerPlugin results={decodedResults} />
+
+            <button onClick={(e) => generatePDF(decodedResults)}>Сформировать отчёт</button>
         </div>
     );
 };
