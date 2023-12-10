@@ -22,7 +22,7 @@ export default function Page() {
             />
             <ResultContainerPlugin results={decodedResults} />
 
-            <button onClick={() => CSVGenerator()}>Сформировать отчёт</button>
+            <a className='download_report' onClick={() => CSVGenerator(decodedResults, localStorage.getItem('User_JWT'))}>Сформировать отчёт</a>
         </div>
     );
 };

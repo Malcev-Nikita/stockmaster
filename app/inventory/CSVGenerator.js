@@ -1,29 +1,39 @@
 'use server'
+import axios from 'axios';
 
-import createCsvWriter from 'csv-writer';
 
-export default async function CSVGenerator() {
-  console.log(1)
-  // Генерация данных для CSV
-  const data = [
-    { name: 'John', age: 30, city: 'New York' },
-    { name: 'Jane', age: 25, city: 'San Francisco' },
-    { name: 'Bob', age: 35, city: 'Los Angeles' },
-  ];
-
-  // Подготовка CSV-заголовков
+export default async function CSVGenerator(decodedResults, JWT) {
+  const date = new Date();
+  const createCsvWriter = require('csv-writer').createObjectCsvWriter;
   const csvHeaders = [
-    { id: 'name', title: 'Name' },
-    { id: 'age', title: 'Age' },
-    { id: 'city', title: 'City' },
+    {id: 'slug', title: 'Id'},
+    {id: 'name', title: 'Название'},
+    {id: 'count', title: 'Количество'},
   ];
 
-  // Создание объекта CSV-писателя
-  const csvWriter = await createCsvWriter({
-    path: 'public/data.csv', // Путь к файлу CSV
+  let data = [];
+
+  for (const element of decodedResults) {
+    try {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs?filters[slug][$eq]=${element.decodedText}`);
+      
+      data.push({
+        slug: response.data.data[0].attributes.slug,
+        name: response.data.data[0].attributes.name,
+        count: response.data.data[0].attributes.count
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const csvFileName = `report_${date.getFullYear()}_${date.getMonth()}_${date.getDate()}_${date.getHours()}_${date.getMinutes()}_${date.getSeconds()}.csv`;
+  const csvFilePath = `public/reports/${csvFileName}`;
+  const csvWriter = createCsvWriter({
+    path: csvFilePath, 
     header: csvHeaders,
+    fieldDelimiter: ';',
   });
 
-  // Запись данных в CSV-файл
-  await csvWriter.writeRecords(data);
+  csvWriter.writeRecords(data);
 }
