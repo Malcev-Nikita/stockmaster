@@ -9,6 +9,7 @@ export default function AuthButton() {
             const data = JSON.parse(localStorage.getItem('User_Data'))
             
             return (
+                
                 <div className='auth profile'>
                     <a href='/profile'>
                         <div className='name'>{data.name} {data.surname}</div>
@@ -27,6 +28,6 @@ export default function AuthButton() {
             )
         }   
     } catch (error) {
-        
+        return error;
     }
 }

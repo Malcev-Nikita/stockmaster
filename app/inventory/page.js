@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Html5QrcodePlugin from './Html5QrcodePlugin.jsx';
 import ResultContainerPlugin from './ResultContainerPlugin.jsx';
-import generatePDF from './PDFGenerate.js';
+import CSVGenerator from './CSVGenerator.js';
 
 export default function Page() {
     const [decodedResults, setDecodedResults] = useState([]);
@@ -22,7 +22,7 @@ export default function Page() {
             />
             <ResultContainerPlugin results={decodedResults} />
 
-            <button onClick={(e) => generatePDF(decodedResults)}>Сформировать отчёт</button>
+            <button onClick={() => CSVGenerator()}>Сформировать отчёт</button>
         </div>
     );
 };
