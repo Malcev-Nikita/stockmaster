@@ -1,14 +1,30 @@
 'use server'
 import axios from 'axios';
 
+async function SendReport(JWT, link, dateStart) {
+  try {
+    await axios({
+      method: 'post',
+      url : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/inventories`,
+      data: {
+        link: link,
+        date_start: dateStart
+      },
+      headers: {
+        Authorization: `Bearer ${JWT}`,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export default async function CSVGenerator(decodedResults, JWT) {
   const date = new Date();
   const createCsvWriter = require('csv-writer').createObjectCsvWriter;
   const csvHeaders = [
-    {id: 'slug', title: 'Id'},
-    {id: 'name', title: 'Название'},
-    {id: 'count', title: 'Количество'},
+    {id: 'slug', title: 'Name'},
+    {id: 'count', title: 'Count'},
   ];
 
   let data = [];
@@ -19,7 +35,6 @@ export default async function CSVGenerator(decodedResults, JWT) {
       
       data.push({
         slug: response.data.data[0].attributes.slug,
-        name: response.data.data[0].attributes.name,
         count: response.data.data[0].attributes.count
       });
     } catch (error) {
@@ -36,4 +51,9 @@ export default async function CSVGenerator(decodedResults, JWT) {
   });
 
   csvWriter.writeRecords(data);
+
+  console.log(JWT)
+  console.log(`/report/${csvFileName}`)
+  console.log(date)
+  // SendReport(JWT, `/report/${csvFileName}`, date);
 }
