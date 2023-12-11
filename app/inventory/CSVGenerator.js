@@ -1,19 +1,20 @@
 'use server'
-import axios from 'axios';
 
-async function SendReport(JWT, link, dateStart) {
+
+async function SendReport(JWT, LINK) {
   try {
-    await axios({
-      method: 'post',
-      url : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/inventories`,
-      data: {
-        link: link,
-        date_start: dateStart
-      },
+    const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/inventories`, { 
+      method: 'POST',
       headers: {
-        Authorization: `Bearer ${JWT}`,
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${JWT}`,
       },
-    });
+      body: JSON.stringify({
+        data: {
+          link_to_report: LINK
+        },
+      }),
+    })
   } catch (error) {
     console.log(error);
   }
@@ -52,8 +53,5 @@ export default async function CSVGenerator(decodedResults, JWT) {
 
   csvWriter.writeRecords(data);
 
-  console.log(JWT)
-  console.log(`/report/${csvFileName}`)
-  console.log(date)
-  // SendReport(JWT, `/report/${csvFileName}`, date);
+  SendReport(JWT, `/report/${csvFileName}`);
 }

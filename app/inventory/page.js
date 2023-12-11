@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Html5QrcodePlugin from './Html5QrcodePlugin.jsx';
 import ResultContainerPlugin from './ResultContainerPlugin.jsx';
 import CSVGenerator from './CSVGenerator.js';
+import InventoryRequest from './InventoryRequest.js';
+
 
 export default function Page() {
     const [decodedResults, setDecodedResults] = useState([]);
@@ -23,6 +25,8 @@ export default function Page() {
             <ResultContainerPlugin results={decodedResults} />
 
             <a className='download_report' onClick={() => CSVGenerator(decodedResults, localStorage.getItem('User_JWT'))}>Сформировать отчёт</a>
+
+            {/* <InventoryRequest/> */}
         </div>
     );
 };
