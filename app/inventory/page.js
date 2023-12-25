@@ -25,8 +25,6 @@ export default function Page() {
             <ResultContainerPlugin results={decodedResults} />
 
             <a className='download_report' onClick={() => CSVGenerator(decodedResults, localStorage.getItem('User_JWT'))}>Сформировать отчёт</a>
-
-            {/* <InventoryRequest/> */}
         </div>
     );
 };

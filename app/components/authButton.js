@@ -11,7 +11,7 @@ export default function AuthButton() {
             return (
                 
                 <div className='auth profile'>
-                    <a href='/profile'>
+                    <a href='#'>
                         <div className='name'>{data.name} {data.surname}</div>
                         <div className='username'>@{data.username}</div>
     

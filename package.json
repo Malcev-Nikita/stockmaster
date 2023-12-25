@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "animejs": "^3.2.1",
-    "axios": "^1.5.1",
+    "axios": "^1.6.2",
     "csv-writer": "^1.6.0",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",

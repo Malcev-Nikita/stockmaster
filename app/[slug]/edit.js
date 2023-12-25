@@ -47,121 +47,176 @@ export default function EditComponent({data}) {
         }, 300);
     }
 
-    return (
-        <div className='catalogs_item_page'>
-            <div className='edit_container'>
-                <label for="edit">Режим редактирования</label>
-                <input type='button' id="edit" value={edit ? "Выключить" : "Включить"} onClick={() => setEdit(!edit)}/>
+    if(localStorage.getItem('User_JWT') !== null) {
+        return (
+            <div className='catalogs_item_page'>
+                <div className='edit_container'>
+                    <label for="edit">Режим редактирования</label>
+                    <input type='button' id="edit" value={edit ? "Выключить" : "Включить"} onClick={() => setEdit(!edit)}/>
+                    {
+                        edit ? (
+                            <input type='button' id="save" value="Сохранить" onClick={() => updateCatalogsItem(data.id, name, description, count)}/>
+                        ) : ""
+                    }
+                </div>
+
                 {
                     edit ? (
-                        <input type='button' id="save" value="Сохранить" onClick={() => updateCatalogsItem(data.id, name, description, count)}/>
-                    ) : ""
+                        <div className='catalogs__item'>
+                            <div className='catalogs__item_left'>
+                                <div className='catalogs__item_left_image'>
+                                    <div className='fancy'></div>
+                                    <Image 
+                                        src={img} 
+                                        width={600} 
+                                        height={600} 
+                                        alt={`${data.attributes.name}`}
+                                    /> 
+                                </div>   
+
+                                <div className='slider'>
+                                    {data.attributes.images.data.map(img => {
+                                        return (
+                                            <div className='slider_item' onClick={() => updateImg(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url}`)}>
+                                                <Image 
+                                                    src={process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url} 
+                                                    width={120} 
+                                                    height={120} 
+                                                    alt={`${img.attributes.name}`}
+                                                />
+                                            </div>
+                                        )
+                                    })}    
+                                </div>         
+                            </div>
+
+                            <div className='catalogs__item_right'>
+                                <input type='text' name='name' placeholder='Название' className='catalogs__item_name' value={name} onChange={(e) => setName(e.target.value)}/>
+
+                                <h3>Описание</h3>
+                                <textarea name="description" placeholder='Описание' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+
+                                <p className='count'>
+                                    Количество на складе: 
+                                        <b>
+                                            <input type='number' name='count' placeholder='Количество' className='catalogs__item_name' value={count} onChange={(e) => setCount(e.target.value)}/>
+                                        </b>
+                                    шт.
+                                </p>
+                            </div>
+
+                            <div className='catalogs__item_qrcode'>
+                                <QRCode
+                                    size={256}
+                                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                                    value={data.attributes.slug}
+                                    viewBox={`0 0 256 256`}
+                                />
+                            </div>
+                        </div>
+                    ) : (
+                        <div className='catalogs__item'>
+                            <div className='catalogs__item_left'>
+                                <div className='catalogs__item_left_image'>
+                                    <div className='fancy'></div>
+                                    <Image 
+                                        src={img} 
+                                        width={600} 
+                                        height={600} 
+                                        alt={`${data.attributes.name}`}
+                                    /> 
+                                </div>   
+
+                                <div className='slider'>
+                                    {data.attributes.images.data.map(img => {
+                                        return (
+                                            <div className='slider_item' onClick={() => updateImg(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url}`)}>
+                                                <Image 
+                                                    src={process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url} 
+                                                    width={120} 
+                                                    height={120} 
+                                                    alt={`${img.attributes.name}`}
+                                                />
+                                            </div>
+                                        )
+                                    })}    
+                                </div>          
+                            </div>
+
+                            <div className='catalogs__item_right'>
+                                <h2>{data.attributes.name}</h2>
+
+                                <h3>Описание</h3>
+                                <div className='description' dangerouslySetInnerHTML={{ __html: markdown.toHTML(data.attributes.description) }}></div>
+
+                                <p className='count'>Количество на складе: <b>{data.attributes.count}</b> шт.</p>
+                            </div>
+
+                            <div className='catalogs__item_qrcode'>
+                                <QRCode
+                                    size={256}
+                                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                                    value={data.attributes.slug}
+                                    viewBox={`0 0 256 256`}
+                                />
+                            </div>
+                        </div>
+                    )
                 }
             </div>
+        )
+    }
+    else {
+        return (
+            <div className='catalogs_item_page'>
+                <div className='catalogs__item'>
+                    <div className='catalogs__item_left'>
+                        <div className='catalogs__item_left_image'>
+                            <div className='fancy'></div>
+                            <Image 
+                                src={img} 
+                                width={600} 
+                                height={600} 
+                                alt={`${data.attributes.name}`}
+                            /> 
+                        </div>   
 
-            {
-                edit ? (
-                    <div className='catalogs__item'>
-                        <div className='catalogs__item_left'>
-                            <div className='catalogs__item_left_image'>
-                                <div className='fancy'></div>
-                                <Image 
-                                    src={img} 
-                                    width={600} 
-                                    height={600} 
-                                    alt={`${data.attributes.name}`}
-                                /> 
-                            </div>   
-
-                            <div className='slider'>
-                                {data.attributes.images.data.map(img => {
-                                    return (
-                                        <div className='slider_item' onClick={() => updateImg(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url}`)}>
-                                            <Image 
-                                                src={process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url} 
-                                                width={120} 
-                                                height={120} 
-                                                alt={`${img.attributes.name}`}
-                                            />
-                                        </div>
-                                    )
-                                })}    
-                            </div>         
-                        </div>
-
-                        <div className='catalogs__item_right'>
-                            <input type='text' name='name' placeholder='Название' className='catalogs__item_name' value={name} onChange={(e) => setName(e.target.value)}/>
-
-                            <h3>Описание</h3>
-                            <textarea name="description" placeholder='Описание' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-
-                            <p className='count'>
-                                Количество на складе: 
-                                    <b>
-                                        <input type='number' name='count' placeholder='Количество' className='catalogs__item_name' value={count} onChange={(e) => setCount(e.target.value)}/>
-                                    </b>
-                                шт.
-                            </p>
-                        </div>
-
-                        <div className='catalogs__item_qrcode'>
-                            <QRCode
-                                size={256}
-                                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                                value={data.attributes.slug}
-                                viewBox={`0 0 256 256`}
-                            />
-                        </div>
+                        <div className='slider'>
+                            {data.attributes.images.data.map(img => {
+                                return (
+                                    <div className='slider_item' onClick={() => updateImg(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url}`)}>
+                                        <Image 
+                                            src={process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url} 
+                                            width={120} 
+                                            height={120} 
+                                            alt={`${img.attributes.name}`}
+                                        />
+                                    </div>
+                                )
+                            })}    
+                        </div>          
                     </div>
-                ) : (
-                    <div className='catalogs__item'>
-                        <div className='catalogs__item_left'>
-                            <div className='catalogs__item_left_image'>
-                                <div className='fancy'></div>
-                                <Image 
-                                    src={img} 
-                                    width={600} 
-                                    height={600} 
-                                    alt={`${data.attributes.name}`}
-                                /> 
-                            </div>   
 
-                            <div className='slider'>
-                                {data.attributes.images.data.map(img => {
-                                    return (
-                                        <div className='slider_item' onClick={() => updateImg(`${process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url}`)}>
-                                            <Image 
-                                                src={process.env.NEXT_PUBLIC_STRAPI_API_URL + img.attributes.url} 
-                                                width={120} 
-                                                height={120} 
-                                                alt={`${img.attributes.name}`}
-                                            />
-                                        </div>
-                                    )
-                                })}    
-                            </div>          
-                        </div>
+                    <div className='catalogs__item_right'>
+                        <h2>{data.attributes.name}</h2>
 
-                        <div className='catalogs__item_right'>
-                            <h2>{data.attributes.name}</h2>
+                        <h3>Описание</h3>
+                        <div className='description' dangerouslySetInnerHTML={{ __html: markdown.toHTML(data.attributes.description) }}></div>
 
-                            <h3>Описание</h3>
-                            <div className='description' dangerouslySetInnerHTML={{ __html: markdown.toHTML(data.attributes.description) }}></div>
-
-                            <p className='count'>Количество на складе: <b>{data.attributes.count}</b> шт.</p>
-                        </div>
-
-                        <div className='catalogs__item_qrcode'>
-                            <QRCode
-                                size={256}
-                                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                                value={data.attributes.slug}
-                                viewBox={`0 0 256 256`}
-                            />
-                        </div>
+                        <p className='count'>Количество на складе: <b>{data.attributes.count}</b> шт.</p>
                     </div>
-                )
-            }
-        </div>
-    )
+
+                    <div className='catalogs__item_qrcode'>
+                        <QRCode
+                            size={256}
+                            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                            value={data.attributes.slug}
+                            viewBox={`0 0 256 256`}
+                        />
+                    </div>
+                </div>
+            </div>
+        )
+        
+    }
 }

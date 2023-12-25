@@ -1,4 +1,5 @@
 'use server'
+import axios from 'axios';
 
 
 async function SendReport(JWT, LINK) {
@@ -53,5 +54,5 @@ export default async function CSVGenerator(decodedResults, JWT) {
 
   csvWriter.writeRecords(data);
 
-  SendReport(JWT, `/report/${csvFileName}`);
+  SendReport(JWT, `${process.env.NEXT_PUBLIC_HOST_URL}/reports/${csvFileName}`);
 }
