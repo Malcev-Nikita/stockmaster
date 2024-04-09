@@ -50,7 +50,7 @@ export default function EditComponent({data}) {
     if(localStorage.getItem('User_JWT') !== null) {
         return (
             <div className='catalogs_item_page'>
-                <div className='edit_container'>
+                {/* <div className='edit_container'>
                     <label for="edit">Режим редактирования</label>
                     <input type='button' id="edit" value={edit ? "Выключить" : "Включить"} onClick={() => setEdit(!edit)}/>
                     {
@@ -58,7 +58,7 @@ export default function EditComponent({data}) {
                             <input type='button' id="save" value="Сохранить" onClick={() => updateCatalogsItem(data.id, name, description, count)}/>
                         ) : ""
                     }
-                </div>
+                </div> */}
 
                 {
                     edit ? (

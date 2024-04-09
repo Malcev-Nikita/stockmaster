@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['cms.studap.ru'],
+        domains: ['cms.sleep-bag-shop.ru'],
     },
     experimental: {
         serverActions: true,

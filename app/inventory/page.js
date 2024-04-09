@@ -13,6 +13,8 @@ export default function Page() {
         setDecodedResults(prev => [...prev, decodedResult]);
     };
 
+    console.log(decodedResults)
+
     return (
         <div className="inventory">
             <Html5QrcodePlugin
@@ -22,9 +24,9 @@ export default function Page() {
                 qrCodeSuccessCallback={onNewScanResult}
                 rememberLastUsedCamera={false}
             />
-            <ResultContainerPlugin results={decodedResults} />
+            {/* <ResultContainerPlugin results={decodedResults} /> */}
 
-            <a className='download_report' onClick={() => CSVGenerator(decodedResults, localStorage.getItem('User_JWT'))}>Сформировать отчёт</a>
+            <a className='download_report' onClick={() => CSVGenerator(JSON.stringify(decodedResults), localStorage.getItem('User_JWT'))}>Сформировать отчёт</a>
         </div>
     );
 };

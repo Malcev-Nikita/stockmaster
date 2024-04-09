@@ -15,7 +15,7 @@ export default function AuthButton() {
                         <div className='name'>{data.name} {data.surname}</div>
                         <div className='username'>@{data.username}</div>
     
-                        <Image width="60" height="60" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${data.avatar[0].url}`} alt=''/>
+                        <Image width="60" height="60" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${data.avatar.url}`} alt=''/>
                     </a>
                 </div>
             )

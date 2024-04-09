@@ -1,5 +1,6 @@
 'use server'
 import axios from 'axios';
+import { json } from 'express';
 
 
 async function SendReport(JWT, LINK) {
@@ -31,7 +32,7 @@ export default async function CSVGenerator(decodedResults, JWT) {
 
   let data = [];
 
-  for (const element of decodedResults) {
+  for (const element of JSON.parse(decodedResults)) {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stock-master-catalogs?filters[slug][$eq]=${element.decodedText}`);
       
